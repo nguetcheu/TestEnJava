@@ -1,5 +1,6 @@
 package com.openclassrooms.testing;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
@@ -53,7 +54,7 @@ public class CalculatorTest {
         int somme = calculatorUnderTest.add(a, b);
 
         // Assert
-        assertEquals(5, somme);
+        assertThat(somme).isEqualTo(5);
     }
 
     @Test
@@ -63,10 +64,10 @@ public class CalculatorTest {
         int b = 5;
 
         // Act
-        int multplication = calculatorUnderTest.multiply(a,b);
+        int multiplication = calculatorUnderTest.multiply(a,b);
 
         // Assert
-        assertEquals(15, multplication);
+        assertEquals(15, multiplication);
     }
 
     @Test
