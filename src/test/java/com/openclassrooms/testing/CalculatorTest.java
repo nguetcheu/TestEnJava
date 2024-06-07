@@ -67,7 +67,7 @@ public class CalculatorTest {
         int multiplication = calculatorUnderTest.multiply(a,b);
 
         // Assert
-        assertEquals(15, multiplication);
+        assertThat(multiplication).isEqualTo(15);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class CalculatorTest {
         int soustraction = calculatorUnderTest.soutraire(a, b);
 
         // Assert
-        assertEquals(-1, soustraction);
+        assertThat(soustraction).isEqualTo(-1);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class CalculatorTest {
         int divide = calculatorUnderTest.divide(a,b);
 
         // Assert
-        assertEquals(0, divide);
+        assertThat(0).isEqualTo(divide);
     }
 
     @ParameterizedTest(name = "{0} x 0 doit être égal à 0")
