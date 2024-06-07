@@ -118,4 +118,16 @@ public class CalculatorTest {
         // Assert
         assertEquals(expectResult, actualResult);
     }
+
+    @Timeout(1)
+    @Test
+    public void longCalcul_shouldComputeInLessThan1Second() {
+        // Arrange
+
+        // Act
+        calculatorUnderTest.longCalculation();
+        // Assert
+        // ...
+    }
+
 }

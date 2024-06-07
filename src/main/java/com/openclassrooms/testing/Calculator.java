@@ -22,4 +22,13 @@ public class Calculator {
             return 0;
         }
     }
+
+    public void longCalculation() {
+        try {
+            // Attendre 2 secondes
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
