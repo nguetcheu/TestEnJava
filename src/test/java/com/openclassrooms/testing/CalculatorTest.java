@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.text.MessageFormat;
@@ -104,5 +105,17 @@ public class CalculatorTest {
 
         // Assert -- ça vaut toujours zéro !
         assertEquals(0, actualResult);
+    }
+
+    @ParameterizedTest(name = "{0} + {1} should equal to {2}")
+    @CsvSource({ "1,1,2", "2,3,5", "42,57,99"})
+    public void add_shouldReturnTheSum_ofMultipleIntegers(int arg1, int arg2, int expectResult) {
+        // Arrange -- Tout est prêt !
+
+        // Act
+        int actualResult = calculatorUnderTest.add(arg1, arg2);
+
+        // Assert
+        assertEquals(expectResult, actualResult);
     }
 }
