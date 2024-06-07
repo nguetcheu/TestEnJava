@@ -3,6 +3,8 @@ package com.openclassrooms.testing;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.text.MessageFormat;
 import java.time.Duration;
@@ -90,5 +92,17 @@ public class CalculatorTest {
 
         // Assert
         assertEquals(0, divide);
+    }
+
+    @ParameterizedTest(name = "{0} x 0 doit être égal à 0")
+    @ValueSource(ints = { 1, 2, 42, 1011, 5089 })
+    public void multiply_shouldReturnZero_ofZeroWithMultipleIntegers(int arg) {
+        // Arrange -- Tout est prêt !
+
+        // Act -- Multiplier par zéro
+        int actualResult = calculatorUnderTest.multiply(arg, 0);
+
+        // Assert -- ça vaut toujours zéro !
+        assertEquals(0, actualResult);
     }
 }
