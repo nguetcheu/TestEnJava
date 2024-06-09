@@ -3,7 +3,9 @@ package com.openclassrooms.testing;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -13,21 +15,24 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Set;
 
+@ExtendWith(LoggingExtension.class)
 public class CalculatorTest {
 
     private static Instant startedAt;
+
+    private Logger logger;
 
     private Calculator calculatorUnderTest;
 
     @BeforeEach
     public void initCalculator() {
-        System.out.println("Avant chaque test ");
+        logger.info("Appel avant chaque test");
         calculatorUnderTest = new Calculator();
     }
 
     @AfterEach
     public void undefCalculator(){
-        System.out.println("Apres chaque test");
+        logger.info("Appel après chaque test");
         calculatorUnderTest = null;
     }
 
