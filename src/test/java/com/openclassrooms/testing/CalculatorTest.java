@@ -36,7 +36,7 @@ public class CalculatorTest {
         calculatorUnderTest = null;
     }
 
-    private void setLogger(Logger logger) {
+    public void setLogger(Logger logger) {
         this.logger = logger;
     }
 
