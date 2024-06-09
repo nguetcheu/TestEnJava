@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.text.MessageFormat;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Set;
 
 public class CalculatorTest {
 
@@ -45,6 +46,7 @@ public class CalculatorTest {
     }
 
     @Test
+    @Tag("QuatreOperations") // ce test fait partie des 4 opérations de base
     void testAddTwoPositiveNumbers() {
         // Arrange
         int a = 2;
@@ -58,6 +60,8 @@ public class CalculatorTest {
     }
 
     @Test
+    @Tag("QuatreOperations") // ce test fait partie des 4 opérations de base
+    @DisplayName("Multiplication de deux nombres")
     void multiplyTwoPositiveNumbers() {
         // Arrange
         int a = 3;
@@ -69,6 +73,8 @@ public class CalculatorTest {
         // Assert
         assertThat(multiplication).isEqualTo(15);
     }
+
+
 
     @Test
     void soustraireTwoPositiveNumber() {
@@ -105,7 +111,7 @@ public class CalculatorTest {
         int actualResult = calculatorUnderTest.multiply(arg, 0);
 
         // Assert -- ça vaut toujours zéro !
-        assertEquals(0, actualResult);
+        assertThat(0).isEqualTo(actualResult);
     }
 
     @ParameterizedTest(name = "{0} + {1} should equal to {2}")
@@ -117,7 +123,7 @@ public class CalculatorTest {
         int actualResult = calculatorUnderTest.add(arg1, arg2);
 
         // Assert
-        assertEquals(expectResult, actualResult);
+        assertThat(expectResult).isEqualTo(actualResult);
     }
 
     @Timeout(1)
@@ -130,5 +136,18 @@ public class CalculatorTest {
         // Assert
         // ...
     }
+
+    @Test
+    public void listDigits_shouldReturnsTheListOfDigits_ofPositiveInteger() {
+        // GIVEN
+        int number = 95897;
+
+        // WHEN
+        Set<Integer> actualDigits = calculatorUnderTest.digitsSet(number);
+
+        // THEN
+        assertThat(actualDigits).containsExactlyInAnyOrder(5, 7, 8, 9);
+    }
+
 
 }
