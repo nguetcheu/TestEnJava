@@ -36,6 +36,10 @@ public class CalculatorTest {
         calculatorUnderTest = null;
     }
 
+    private void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
     @BeforeAll
     static public void initStartingTime() {
         System.out.println("Appel avant tout les tests");
